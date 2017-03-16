@@ -1,5 +1,5 @@
 # RxExamples
-A compilation of RxExamples
+Coming soon, a compilation of RxExamples.  For now, enjoy the first example...
 
 ## RetryWhen
 The RetryWhen example illustrates how to setup a subscription to try 3 times to received a successful response before causing the subscription to receive an error response.  Each subsequent request will wait longer, in order to give the API a chance to recover or data availability to improve.
