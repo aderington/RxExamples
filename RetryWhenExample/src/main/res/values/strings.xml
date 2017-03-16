@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RxExamples</string>
+    <string name="query_hint">GitHub User</string>
+</resources>

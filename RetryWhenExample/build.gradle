@@ -1,0 +1,93 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.6.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.layercake.rxexamples.retrywhen"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    /** The following dependencies are required for the RetryWhen logic **/
+    final def RX_VERSION = '2.0.1'
+    compile "io.reactivex.rxjava2:rxandroid:$RX_VERSION"
+    compile "io.reactivex.rxjava2:rxjava:$RX_VERSION"
+
+    // Using Timber to ease JUnit testing
+    compile 'com.jakewharton.timber:timber:4.5.1'
+    /**/
+
+
+    /** The following dependencies are used to set up the service call **/
+    final def RETROFIT_VERSION = '2.2.0'
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+
+    final def OK_HTTP_VERSION = '3.4.1'
+    compile "com.squareup.okhttp3:logging-interceptor:$OK_HTTP_VERSION"
+    compile "com.squareup.okhttp3:okhttp:$OK_HTTP_VERSION"
+
+    compile 'com.google.code.gson:gson:2.7'
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    /**/
+
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    final def SUPPORT_VERSION = '25.3.0'
+    compile "com.android.support:design:$SUPPORT_VERSION"
+    compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+
+    final def BUTTERKNIFE_VERSION = '8.5.1'
+    compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testCompile 'junit:junit:4.12'
+}
