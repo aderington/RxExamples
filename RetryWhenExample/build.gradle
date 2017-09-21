@@ -13,12 +13,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.layercake.rxexamples.retrywhen"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -57,16 +57,16 @@ dependencies {
 
 
     /** The following dependencies are used to set up the service call **/
-    final def RETROFIT_VERSION = '2.2.0'
+    final def RETROFIT_VERSION = '2.3.0'
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
 
-    final def OK_HTTP_VERSION = '3.4.1'
+    final def OK_HTTP_VERSION = '3.9.0'
     compile "com.squareup.okhttp3:logging-interceptor:$OK_HTTP_VERSION"
     compile "com.squareup.okhttp3:okhttp:$OK_HTTP_VERSION"
 
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.code.gson:gson:2.8.2'
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     /**/
@@ -74,12 +74,12 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    final def SUPPORT_VERSION = '25.3.0'
+    final def SUPPORT_VERSION = '26.0.0-alpha1'
     compile "com.android.support:design:$SUPPORT_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    final def BUTTERKNIFE_VERSION = '8.5.1'
+    final def BUTTERKNIFE_VERSION = '8.8.1'
     compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
 
