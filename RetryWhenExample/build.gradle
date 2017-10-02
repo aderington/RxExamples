@@ -2,15 +2,10 @@ buildscript {
     repositories {
         mavenCentral()
     }
-
-    dependencies {
-        classpath 'me.tatarka:gradle-retrolambda:3.6.0'
-    }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 26
@@ -74,7 +69,7 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    final def SUPPORT_VERSION = '26.0.0-alpha1'
+    final def SUPPORT_VERSION = '26.1.0'
     compile "com.android.support:design:$SUPPORT_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
